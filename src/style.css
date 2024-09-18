@@ -1,3 +1,49 @@
+body {
+	background-color: antiquewhite;
+}
+
+.container {
+	margin: auto;
+	max-width: 80%;
+	padding: 30px;
+	border-radius: 20px;
+	background-color: white;
+}
+
 h1 {
 	text-align: center;
+	font-size: 40px;
+}
+
+.menu {
+	display: block;
+	margin: auto;
+	font-size: 15px;
+	padding: 8px 590px 8px 0;
+	text-align: left;
+}
+
+.countries {
+	margin: 10px 0 15px 0;
+}
+
+.country-header {
+	display: flex;
+	justify-content: space-between;
+	font-size: 40px;
+}
+
+h2 {
+	margin: 0;
+	font-size: 40px;
+}
+
+.time {
+	font-weight: bold;
+	font-size: 40px;
+}
+
+footer {
+	text-align: center;
+	margin-top: 20px;
 }

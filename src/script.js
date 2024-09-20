@@ -28,3 +28,25 @@ updateTime(timezone);
 let intervalId = setInterval(() => {
 	updateTime(timezone);
 }, 1000);
+
+//CONSTANT CITIES
+
+let cityHtml = "";
+
+const cities = ["Europe/london", "Europe/paris", "US/hawaii"];
+
+cities.forEach(function showTimezone(city) {
+	cityHtml =
+		cityHtml +
+		`
+	<div class="cities">
+				<div>
+					<h2 id="city">London</h2>
+					<div class="date" id="date">${city}</div>
+				</div>
+				<div class="time" id="time">12:00:00<span class="am-pm">AM</span></div>
+			</div>`;
+});
+
+let allCities = document.querySelector("#all-cities");
+allCities.innerHTML = cityHtml;

@@ -22,35 +22,58 @@ function updateTime(timezone) {
 	cityElement.innerHTML = capitalizeCity(city);
 }
 
-let timezone = "Europe/london";
+let timezone = "Asia/dubai";
 updateTime(timezone);
 
 let intervalId = setInterval(() => {
 	updateTime(timezone);
 }, 1000);
+
 //CONSTANT CITIES
 
-let cityHtml = "";
-
-const cities = ["Europe/london", "Europe/paris", "US/hawaii"];
-
-cities.forEach(function showTimezone(city) {
-	let cityElement2 = city.split("/")[1];
-
-	function capitalizeCity2(string) {
-		return string[0].toUpperCase() + string.slice(1);
-	}
-	cityHtml =
-		cityHtml +
-		`
+function showLondon() {
+	let london = document.querySelector("#london");
+	london.innerHTML = `
 	<div class="cities">
-	<div>
-	<h2>${capitalizeCity2(cityElement2)}</h2>
-	<div class="date">${moment().tz(city).format("dddd Do MMMM")}</div>
-	</div>
-	<div class="time">${moment().tz(city).format("HH:mm:ss")}</div>
-	</div>`;
-});
+				<div>
+					<h2>London</h2>
+					<div class="date">${moment().tz("Europe/london").format("dddd Do MMMM")}</div>
+				</div>
+				<div class="time">${moment().tz("Europe/london").format("HH:mm:ss")}</div>
+			</div>`;
+}
 
-let allCities = document.querySelector("#all-cities");
-allCities.innerHTML = cityHtml;
+showLondon();
+setInterval(showLondon, 1000);
+
+function showChicago() {
+	let chicago = document.querySelector("#chicago");
+	chicago.innerHTML = `
+	<div class="cities">
+				<div>
+					<h2>Chicago</h2>
+					<div class="date">${moment().tz("America/chicago").format("dddd Do MMMM")}</div>
+				</div>
+				<div class="time">${moment().tz("America/chicago").format("HH:mm:ss")}</div>
+			</div>`;
+}
+
+showChicago();
+setInterval(showChicago, 1000);
+
+function showSydney() {
+	let sydney = document.querySelector("#sydney");
+	sydney.innerHTML = `
+	<div class="cities">
+				<div>
+					<h2>Sydney</h2>
+					<div class="date">${moment()
+						.tz("Australia/sydney")
+						.format("dddd Do MMMM")}</div>
+				</div>
+				<div class="time">${moment().tz("Australia/sydney").format("HH:mm:ss")}</div>
+			</div>`;
+}
+
+showSydney();
+setInterval(showSydney, 1000);

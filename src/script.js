@@ -3,22 +3,26 @@ selectCity.addEventListener("change", getTimezone);
 
 function getTimezone(event) {
 	timezone = selectCity.value;
+	if (timezone === "current") {
+		timezone = moment.tz.guess();
+	}
 	updateTime(timezone);
 }
 
 function updateTime(timezone) {
+	let timezoneElement = timezone;
 	let dateElement = document.querySelector("#date");
 	let timeElement = document.querySelector("#time");
 
 	let cityElement = document.querySelector("#city");
-	let city = timezone.split("/")[1];
+	let city = timezoneElement.split("/")[1];
 
 	function capitalizeCity(string) {
 		return string[0].toUpperCase() + string.slice(1);
 	}
 
-	dateElement.innerHTML = moment().tz(timezone).format("dddd Do MMMM");
-	timeElement.innerHTML = moment().tz(timezone).format("HH:mm:ss");
+	dateElement.innerHTML = moment().tz(timezoneElement).format("dddd Do MMMM");
+	timeElement.innerHTML = moment().tz(timezoneElement).format("HH:mm:ss");
 	cityElement.innerHTML = capitalizeCity(city);
 }
 
